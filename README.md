@@ -30,15 +30,17 @@ The `GetResults` function is called upon the task marking itself as complete. Th
 
 ## API
 
-`ParallelWorker.new(taskModule: ModuleScript, allocate: number?) -> ParallelWorker`
-Creates a new ParallelWorker that dispatches parallel tasks of the provided ModuleScript.
+`ParallelWorker.new(taskModule: ModuleScript, allocate: number?) -> ParallelWorker`<br/>
+Creates a new ParallelWorker that dispatches parallel tasks of the provided ModuleScript.<br/>
 The optional `allocate` parameter lets you pre-allocate a set number of actors for tasks to use.
 
-`ParallelWorker:Dispatch(...any) -> Dispatch`
-Dispatches a new parallel task of the worker's task module and returns a Dispatch object representing the execution of the task. The task can be cancelled outside of a parallel context by calling `Dispatch:Cancel()`.
+`ParallelWorker:Dispatch(...any) -> Dispatch`<br/>
+Dispatches a new parallel task of the worker's task module and returns a Dispatch object representing the execution of the task.<br/>
+The task can be cancelled outside of a parallel context by calling `Dispatch:Cancel()`.
 
-`ParallelWorker:Invoke(...any) -> (boolean, ...any) [Yields]`
-Dispatches a new parallel task of the worker's task module and yields the calling thread until execution is completed. Returns true if the task was finished successfully, as well as any data that was received from the task module's GetResults function (if one was defined).
+`ParallelWorker:Invoke(...any) -> (boolean, ...any) [Yields]`<br/>
+Dispatches a new parallel task of the worker's task module and yields the calling thread until execution is completed.<br/>
+Returns true if the task was finished successfully, as well as any data that was received from the task module's GetResults function (if one was defined).
 
-`Dispatch:Cancel() -> boolean`
+`Dispatch:Cancel() -> boolean`<br/>
 Cancels the parallel task associated with this dispatch. Returns true if the cancellation was performed, or false if the task was finished/cancelled already.
