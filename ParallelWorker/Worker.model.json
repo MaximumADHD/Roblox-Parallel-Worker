@@ -1,0 +1,14 @@
+{
+    "ClassName": "Actor",
+    
+    "Children": [
+        {
+            "ClassName": "BindableEvent",
+            "Name": "Execute"
+        },
+        {
+            "ClassName": "BindableEvent",
+            "Name": "Finished"
+        }
+    ]
+}

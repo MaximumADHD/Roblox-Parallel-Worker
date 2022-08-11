@@ -1,4 +1,4 @@
 {
 	"name": "ParallelWorker",
-	"tree": { "$path": "src" }
+	"tree": { "$path": "ParallelWorker" }
 }
