@@ -35,8 +35,7 @@ Creates a new ParallelWorker that dispatches parallel tasks of the provided Modu
 The optional `allocate` parameter lets you pre-allocate a set number of actors for tasks to use.
 
 `ParallelWorker:Dispatch(...any) -> Dispatch`<br/>
-Dispatches a new parallel task of the worker's task module and returns a Dispatch object representing the execution of the task.<br/>
-The task can be cancelled outside of a parallel context by calling `Dispatch:Cancel()`.
+Dispatches a new parallel task of the worker's task module and returns a Dispatch object representing the execution of the task. The task can be cancelled outside of a parallel context by calling `Dispatch:Cancel()`.
 
 `ParallelWorker:Invoke(...any) -> (boolean, ...any) [Yields]`<br/>
 Dispatches a new parallel task of the worker's task module and yields the calling thread until execution is completed.<br/>
