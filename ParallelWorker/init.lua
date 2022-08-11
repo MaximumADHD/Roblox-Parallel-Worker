@@ -85,7 +85,7 @@ Dispatch.__index = Dispatch
 local HttpService = game:GetService("HttpService")
 local RunService = game:GetService("RunService")
 
-if not RunService:IsRunning() or RunService:IsEdit() then
+if not RunService:IsRunning() then
 	error("Cannot require ParallelWorker in edit mode at this time!", 2)
 end
 
