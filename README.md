@@ -20,7 +20,7 @@ When a task is dispatched, each function declared in a module will be called as 
 | IsFinished | Before/After Update() calls.    |      Yes     |
 | GetResults | When a task is finishing.       |      No      |
 
-The `Execute` function can be used for a single task to be performed in the dispatched task, or to initialize data for the task instance to use. The `self` variable in your TaskModule's functions will refer to the unique task execution instance, so you can store any lifetime variables of the task in that table.
+The `Execute` function can be used for a single task to be performed in the dispatched task, or to initialize data for the task instance to use. The `self` variable in your TaskModule's functions will refer to the unique task execution instance, so you can store any lifetime variables of the task in that table. Arguments passed into the ParallelWorker's `Dispatch` and `Invoke` methods can be accessed from the Paramaters of the function.
 
 The `Update` function can be used for a parallel routine that loops on the RunService's Heartbeat. In the body of `Update`, you can cancel execution of the task via `self:Finish()`.
 
