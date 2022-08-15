@@ -18,7 +18,7 @@
 		• TaskModule:GetResults() -> ...any
 
 	When a task is dispatched, each function declared
-	in a module will be called as such in a dispatched task:
+	in a module will be called as such:
 
 	|  Function  |     When does it get called?    | In Parallel? |
 	+------------+---------------------------------+--------------+
