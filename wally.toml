@@ -1,0 +1,9 @@
+[package]
+name = "maximumadhd/parallel-worker"
+description = "Parallel task distribution library that abstracts Roblox's actor model away in favor of task modules."
+version = "1.0.0"
+license = "MIT"
+registry = "https://github.com/MaximumADHD/Roblox-Parallel-Worker"
+realm = "shared"
+
+[dependencies]

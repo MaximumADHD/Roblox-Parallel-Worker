@@ -1,0 +1,27 @@
+name: Upload Package
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - lib/**
+
+jobs:
+  upload:
+    name: Upload Package
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        submodules: true
+    
+    - uses: Roblox/setup-foreman@v1
+      with:
+        token: ${{ secrets.ACCESS_TOKEN }}
+
+    - name: Upload
+      run: rojo upload --cookie "$BOT_COOKIE" --asset_id 10559876847
+      env:
+        BOT_COOKIE: ${{ secrets.BOT_COOKIE }}
