@@ -86,10 +86,6 @@ Dispatch.__index = Dispatch
 local HttpService = game:GetService("HttpService")
 local RunService = game:GetService("RunService")
 
-if not RunService:IsRunning() then
-	error("Cannot require ParallelWorker in edit mode at this time!", 2)
-end
-
 local baseWorker = script:WaitForChild("Worker")
 local bin: any = script:WaitForChild("ParallelTasks")
 
@@ -103,13 +99,16 @@ export type DispatchState = {
 	_finished: RBXScriptSignal,
 }
 
-if RunService:IsClient() then
+if not RunService:IsRunning() then
+	bin = script.ParallelTasks:Clone()
+	bin.Parent = script
+elseif RunService:IsClient() then
 	local Players = game:GetService("Players")
 	local player = assert(Players.LocalPlayer)
 
 	bin = script:WaitForChild("ParallelTasks")
 	bin.Parent = player:WaitForChild("PlayerScripts")
-else
+elseif RunService:IsServer() then
 	bin = script.ParallelTasks:Clone()
 	bin.Parent = game:GetService("ServerScriptService")
 end
@@ -168,9 +167,12 @@ local function allocateWorker(intoQueue: boolean?): Worker
 		queueWorker(worker)
 	end)
 
-	if RunService:IsServer() then
+	if not RunService:IsRunning() then
 		thread = script.Server:Clone()
-	else
+		thread.RunContext = Enum.RunContext.Plugin
+	elseif RunService:IsServer() then
+		thread = script.Server:Clone()
+	elseif RunService:IsClient() then
 		thread = script.Client:Clone()
 	end
 
